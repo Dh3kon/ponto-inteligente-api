@@ -39,7 +39,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Override
 	public Optional<Funcionario> buscarPorId(Long id) {
-		log.info("Biscando funcionario pelo id: {}", id);
+		log.info("Buscando funcionario pelo id: {}", id);
 		return funcionarioRepository.findById(id);
 	}
 
