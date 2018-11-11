@@ -33,7 +33,7 @@ public class EmpresaController {
 	@GetMapping("/cnpj/{cnpj}")
 	public ResponseEntity<Response<EmpresaDto>> buscarPorCnpj(@PathVariable("cnpj") String cnpj) {
 		log.info("Buscando empresa por CNPJ: {}", cnpj);
-		Response<EmpresaDto> response = new Response<>();
+		Response<EmpresaDto> response = new Response<EmpresaDto>();
 		Optional<Empresa> empresa = empresaService.buscarPorCnpj(cnpj);
 
 		if (!empresa.isPresent()) {
@@ -42,7 +42,7 @@ public class EmpresaController {
 			return ResponseEntity.badRequest().body(response);
 		}
 
-		response.setData(converterEmpresaDto(empresa.get()));
+		response.setData(this.converterEmpresaDto(empresa.get()));
 		return ResponseEntity.ok(response);
 	}
 
